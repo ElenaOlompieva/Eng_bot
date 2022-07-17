@@ -13,7 +13,7 @@ f = open('En_words.txt', 'r', encoding='UTF-8')
 NewWords = f.read().split('\n')
 f.close() 
 
-#Вроверка перед вставкой: есть ли слово в таблице English_Words
+#Проверка перед вставкой: есть ли слово в таблице English_Words
 def check_varible (Word):
     sqlite_connection = sqlite3.connect('English_words.db')
     cursor = sqlite_connection.cursor()
@@ -76,7 +76,7 @@ def select_word (CHANNEL_NAME):
                                JOIN Log_English_Words as lw
                                  ON lw.Word_ID = w.Word_ID
                               WHERE lw.Chat_ID = ?) AS p
-                       ORDER BY RANDOM() LIMIT 1""", (CHANNEL_NAME, ))
+                              ORDER BY RANDOM() LIMIT 1""", (CHANNEL_NAME, ))
 
     result = cursor.fetchall()
 
